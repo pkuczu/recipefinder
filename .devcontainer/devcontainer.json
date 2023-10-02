@@ -7,9 +7,12 @@
 		"context": "..",
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 		"dockerfile": "../Dockerfile"
-	},
-	"features": {
-		"ghcr.io/devcontainers-contrib/features/node-asdf:0": {}
+// <<<<<<< registration_login_page
+// 	},
+// 	"features": {
+// 		"ghcr.io/devcontainers-contrib/features/node-asdf:0": {}
+// =======
+// >>>>>>> main
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
