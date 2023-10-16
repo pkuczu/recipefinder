@@ -48,11 +48,3 @@ bs = BeautifulSoup(request.content, 'html5lib')
 #         ''', (recipe['title'], recipe['ingredients'], recipe['instructions']))
 #     conn.commit()
 # conn.close()
-
-
-Webbot to interact with website
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-driver = webdriver.Chrome()
-driver.get("https://www.allrecipes.com/")
