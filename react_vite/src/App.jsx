@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import pizzaLogo from './assets/pizza.png'; // Import the rotating pizza image
+import './App.css';
+import HomePage from './webpage';
+import LoginPage from './login-page';
+import RegistrationPage from './registration-page';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+    <div style={styles.appContainer}>
+      <div style={styles.logoContainer}>
+        <a target="_blank">
+          <img src={pizzaLogo} className="logo pizza" alt="Rotating Pizza" /> {/* Use the rotating pizza image */}
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <h1 style={styles.appTitle}>Recipe Finder</h1>
+      <HomePage /> {/* Render the HomePage component here */}
+    </div>
+  );
 }
 
-export default App
+const styles = {
+  appContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: '', // Reverted to the default background color
+    height: '100vh',
+  },
+  logoContainer: {
+    marginTop: '20px', // Adjust the margin-top as needed to move the logo closer to the top
+  },
+  appTitle: {
+    fontSize: '40px',
+    fontFamily: 'sans-serif', // Reverted to the default font
+  },
+};
+
+export default App;
