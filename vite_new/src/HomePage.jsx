@@ -4,7 +4,28 @@ import './App.css'
 
 const HomePage = () => {
   const [ingredientList, setIngredients] = useState([{ service: "" }]);
-
+  
+  const sendIngredientsToBackend = (ingredients) => {
+    const backendEndpoint = 'REPLACE WITH ACTUAL URL OF BACKEND API';
+  
+    fetch(backendEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ingredients }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Ingredients sent to the backend successfully.');
+        } else {
+          console.error('Failed to send ingredients to the backend.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
   const handleServiceChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...ingredientList];
@@ -21,6 +42,7 @@ const HomePage = () => {
   const handleServiceAdd = () => {
     setIngredients([...ingredientList, { service: "" }]);
   };
+
   
   return (
     
@@ -76,7 +98,15 @@ const HomePage = () => {
               {singleService.service && <li>{singleService.service}</li>}
             </ul>
           ))}
+          <button  style={{ paddingLeft: '10px' }}onClick={sendIngredientsToBackend(ingredientList)}>
+          Search for Recipes
+        </button >
       </div>
+      
+      <div >
+        
+      </div>
+      
     </form>
       <p id="bottom" className="read-the-docs">
         Made by Team 47
