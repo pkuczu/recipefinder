@@ -44,9 +44,11 @@ def getIngredientsAllRecipes(url):
     page_html = BeautifulSoup(request.content, 'html5lib')
 
     ingredients = page_html.find_all(class_="mntl-structured-ingredients__list-item")
-    f2 = open("test2.txt", "a")
+    f2 = open("test4.txt", "a")
     for i in ingredients:
         ingredient = str(i.getText())
         f2.write(ingredient)
     f2.write('\n')
     f2.close
+
+getRecipeAllRecipes('chicken')
