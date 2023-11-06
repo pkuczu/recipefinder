@@ -20,17 +20,22 @@ def search_ingredient(ingredient):      # returns a list of the recipes that hav
     for i in range(len(all_names)):
         recipe_name = all_names[i]
         recipe_name = recipe_name[0]
-        recipe_name = recipe_name.replace('{', '').replace('}', '')
+        # recipe_name = recipe_name.replace('{', '').replace('}', '')
 
         ingredients_list = all_ingredients[i]
 
         ingredients_list = ingredients_list[0]
-        ingredients_list = ingredients_list.replace('{', '').replace('}', '')
-        ingredients_list = ingredients_list.split(", ")
+        # ingredients_list = ingredients_list.replace('{', '').replace('}', '')
+        ingredients_list = ingredients_list.split(". ")
 
         for item in ingredients_list:
-            if item == ingredient:
-                recipes_containing_ingredient.append(recipe_name)
+            # print(item)
+            item_keywords = item.split()
+
+            for keyword in item_keywords:
+                keyword = keyword.replace(',', '')
+                if keyword == ingredient:
+                    recipes_containing_ingredient.append(recipe_name)
     
     # for ingredients_list in all_ingredients:
         # print(ingredients_list)
@@ -47,7 +52,7 @@ def search_ingredient(ingredient):      # returns a list of the recipes that hav
 
     return recipes_containing_ingredient
 
-print(search_ingredient("ingredient_str"))
+print(search_ingredient("peanut"))
 
 # conn = sqlite3.connect('recipes_test.db')
 # cursor = conn.cursor()

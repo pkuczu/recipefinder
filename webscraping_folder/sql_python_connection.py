@@ -20,8 +20,11 @@ conn.commit()
 ingredients = ['2 tablespoons peanut oil, divided', '1  shallot, finely chopped', '¼  white onion, chopped', '2 tablespoons butter', '1 tablespoon ginger garlic paste', '2 teaspoons lemon juice', '2 teaspoons garam masala, divided', '1 teaspoon chili powder', '1 teaspoon ground cumin']
 ingredient_str = ''
 for x in ingredients:
-    ingredient_str += ' ' + x
+    ingredient_str += ". " + x
 
-cursor.execute('INSERT INTO test VALUES ("{Chicken Makhani Indian Butter Chicken}", "{https://www.allrecipes.com/recipe/45957/chicken-makhani-indian-butter-chicken/}", "{ingredient_str}");')
+print(ingredient_str)
+
+cursor.execute(f'INSERT INTO test VALUES ("Chicken Makhani Indian Butter Chicken", "https://www.allrecipes.com/recipe/45957/chicken-makhani-indian-butter-chicken/", "{ingredient_str}");')
+conn.commit()
 
 conn.close()
