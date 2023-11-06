@@ -1,4 +1,4 @@
-# branch name: sql_creation_and_push
+# branch name: sql_python
 
 import sqlite3
 from sqlite3 import Error
@@ -13,7 +13,7 @@ cursor.execute("DROP TABLE IF EXISTS test")
 #                                     link TEXT,
 #                                     ingredients TEXT,
 #                                 ); """
-cursor.execute(""" CREATE TABLE IF NOT EXISTS test (name TEXT, link TEXT, ingredients TEXT); """)
+cursor.execute(""" CREATE TABLE IF NOT EXISTS test (link TEXT, ingredients TEXT); """)
 conn.commit()
 
 
@@ -22,6 +22,10 @@ ingredient_str = ''
 for x in ingredients:
     ingredient_str += ' ' + x
 
-cursor.execute('INSERT INTO test VALUES ("{Chicken Makhani Indian Butter Chicken}", "{https://www.allrecipes.com/recipe/45957/chicken-makhani-indian-butter-chicken/}", "{ingredient_str}");')
+cursor.execute('''INSERT INTO test VALUES (?, ?)''', ("https://www.allrecipes.com/recipe/45957/chicken-makhani-indian-butter-chicken/", ingredient_str))
+
+cursor.execute('''SELECT * FROM test''')
+results = cursor.fetchall()
+print(results)
 
 conn.close()
