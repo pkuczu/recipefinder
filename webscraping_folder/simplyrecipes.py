@@ -2,9 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import sqlite3
 
-# branch name: updatingsimplyrecipes
-
-conn = sqlite3.connect('recipes.sql')
+# branch name: updatingsimplyrecipes2
 
 def getRecipeSimplyRecipes(ingredient):
     # Get first page 
