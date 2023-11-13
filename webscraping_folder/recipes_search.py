@@ -52,7 +52,7 @@ def search_ingredient(ingredient):      # returns a list of the recipes that hav
 
     return recipes_containing_ingredient
 
-print(search_ingredient("peanut"))
+print(search_ingredient("butter"))
 
 # conn = sqlite3.connect('recipes_test.db')
 # cursor = conn.cursor()
@@ -82,5 +82,5 @@ print(search_ingredient("peanut"))
 # for result in results:
     # print(result)
 
-search_ingredient("hello")
+print(search_ingredient("spinach"))
     
