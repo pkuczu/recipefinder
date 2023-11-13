@@ -35,10 +35,16 @@ def getRecipeAllRecipes(ingredient):
                 # f.write('\n')
                 # getIngredientsAllRecipes(link.get("href"))
                 actual_link = link.get("href")
+                # print(f"Actual link: {actual_link}")
+
                 ingredient_list = getIngredientsAllRecipes(link.get("href"))
+                # print(f"Ingredient list: {ingredient_list}")
+
                 ingredient_str = ''
                 for i in ingredient_list:
-                    ingredient_str = ingredient_str + i[1:len(i)-1] + ', '
+                    ingredient_str = ingredient_str + i[1:len(i)-1] + '. '
+                # print(f"Ingredient string: {ingredient_str}")
+
                 cursor.execute('''INSERT INTO test VALUES (?, ?)''', (actual_link, ingredient_str))
 
 def getIngredientsAllRecipes(url):
@@ -56,14 +62,16 @@ def getIngredientsAllRecipes(url):
 
 conn = sqlite3.connect('recipes_test.db')
 cursor = conn.cursor()
-cursor.execute("DROP TABLE IF EXISTS test")
+# cursor.execute("DROP TABLE IF EXISTS test")
 
 cursor.execute(""" CREATE TABLE IF NOT EXISTS test (link TEXT, ingredients TEXT); """)
 conn.commit()
 
 getRecipeAllRecipes('squid')
 
-cursor.execute('''INSERT INTO test VALUES (?, ?)''', ('actual_link', 'ingredient_str'))
+conn.commit()
+
+# cursor.execute('''INSERT INTO test VALUES (?, ?)''', ('actual_link', 'ingredient_str'))
 
 cursor.execute('''SELECT * FROM test''')
 results = cursor.fetchall()
