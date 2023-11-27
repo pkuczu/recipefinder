@@ -4,9 +4,14 @@ import './App.css'
 
 const HomePage = () => {
   const [ingredientList, setIngredients] = useState([{ service: "" }]);
-  
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    sendIngredientsToBackend(ingredientList);
+  };
+
   const sendIngredientsToBackend = (ingredients) => {
-    const backendEndpoint = 'REPLACE WITH ACTUAL URL OF BACKEND API';
+    const backendEndpoint = 'http://localhost:5173/addIngredients';
   
     fetch(backendEndpoint, {
       method: 'POST',
@@ -15,16 +20,29 @@ const HomePage = () => {
       },
       body: JSON.stringify({ ingredients }),
     })
-      .then((response) => {
-        if (response.ok) {
-          console.log('Ingredients sent to the backend successfully.');
-        } else {
-          console.error('Failed to send ingredients to the backend.');
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    .then((response) => {
+      console.log('Response object:', response);
+
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Check if the response has JSON content
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+          return response.json();
+      } else {
+          // Handle non-JSON response
+          return response.text();
+      }
+    })
+    .then((data) => {
+      console.log('Response from the backend:', data);
+      // You can perform any additional actions here if needed
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   };
   const handleServiceChange = (e, index) => {
     const { name, value } = e.target;
@@ -52,7 +70,7 @@ const HomePage = () => {
           Log in
         </a>
       </header>
-      <form className="App" autoComplete="off">
+      <form className="App" autoComplete="off" onSubmit={handleFormSubmit}>
       <div className="form-field">
         <label htmlFor="service">Ingredients</label>
         {ingredientList.map((singleService, index) => (
@@ -98,8 +116,8 @@ const HomePage = () => {
               {singleService.service && <li>{singleService.service}</li>}
             </ul>
           ))}
-          <button  style={{ paddingLeft: '10px' }}onClick={sendIngredientsToBackend(ingredientList)}>
-          Search for Recipes
+<button style={{ paddingLeft: '10px' }} onClick={() => sendIngredientsToBackend(ingredientList)}>
+                    Search for Recipes
         </button >
       </div>
       
@@ -137,7 +155,7 @@ const styles = {
     textDecoration: 'none',
     fontSize: '16px',
     cursor: 'pointer',
-    borderRadius: '5px', // Add rounded corners
+    borderRadius: '5px',
   },
   title: {
     fontSize: '24px',

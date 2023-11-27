@@ -50,4 +50,4 @@ def getRecipeSimplyRecipes(ingredient):
 #     f2.write('\n')
 #     f2.close
 
-getRecipeSimplyRecipes('chicken')
+getRecipeSimplyRecipes('asian')
