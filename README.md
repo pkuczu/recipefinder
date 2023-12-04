@@ -9,9 +9,9 @@ For more details, view the full project proposal [here](https://docs.google.com/
 # Developers
 Team 47:
 - **Patrick Kuczun**: React frontend and Flask server
-- **Vivian Chen**:
--  **Sarah Dowden**:
--  **Aanya Singh Dhankhar**: 
+- **Vivian Chen**: Database and connecting frontend to backend
+- **Sarah Dowden**: Webscraping and Importing Information into Database
+- **Aanya Singh Dhankhar**: 
 
 # Technical Architecture
 
@@ -32,6 +32,14 @@ pip3 install flask_cors
 pip3 install flask flask-sqlalchemy
 
 ```
+```
+pip3 install beautifulsoup4
+```
+
+```
+pip3 install sqlite
+```
+
 ```
 npm install react-router-dom
 ```
