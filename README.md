@@ -11,7 +11,7 @@ Team 47:
 - **Patrick Kuczun**: React frontend and Flask server
 - **Vivian Chen**: Database and connecting frontend to backend
 - **Sarah Dowden**: Webscraping and Importing Information into Database
-- **Aanya Singh Dhankhar**: 
+- **Aanya Singh Dhankhar**: Webscraping and updating Database
 
 # Technical Architecture
 
