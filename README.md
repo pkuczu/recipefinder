@@ -13,6 +13,39 @@ Team 47:
 -  **Sarah Dowden**:
 -  **Aanya Singh Dhankhar**: 
 
+# Technical Architecture
+
+<img width="655" alt="Screen Shot 2023-12-03 at 7 22 07 PM" src="https://github.com/CS222-UIUC-FA23/group-project-team47/assets/116613790/06835b43-ec07-4180-99df-78f526346197">
 
 
+## Package Management
+
+Packages used:
+
+```
+pip3 install requests
+```
+```
+pip3 install flask_cors
+```
+```
+pip3 install flask flask-sqlalchemy
+
+```
+```
+npm install react-router-dom
+```
+
+
+Running the Flask server:
+```
+python3 server.py
+```
+Running the React application:
+
+```
+# make sure it is running on the same port as flask
+npm run dev
+```
+  
 
