@@ -1,4 +1,4 @@
-# current branch name: finalizing_database
+# current branch name: finalizing_database2
 
 from bs4 import BeautifulSoup
 import requests
@@ -56,7 +56,7 @@ def getIngredientsAllRecipes(url):
 
 conn = sqlite3.connect('recipes.db')
 cursor = conn.cursor()
-cursor.execute("DROP TABLE IF EXISTS test")
+# cursor.execute("DROP TABLE IF EXISTS test")
 
 cursor.execute(""" CREATE TABLE IF NOT EXISTS test (link TEXT, ingredients TEXT); """)
 conn.commit()
@@ -64,14 +64,15 @@ conn.commit()
 # getRecipeAllRecipes('squid')
 
 # List of things to input into the database
-meat_list = ['chicken', 'beef', 'steak', 'turkey', 'lamb', 'veal', 'pork', 'sausage', 'duck', 'goose', 'octopus', 'fish', 'salmon', 'tilapia', 'crab', 'lobsters', 'mussels', 'shrimp', 'prawns', 'oysters', 'scallops', 'clams']
-vegetable_list = ['broccoli', 'carrots', 'asparagus', 'green beans', 'tomatoes', 'bok choy', 'broccolini', 'celery', 'corn', 'snap peas', 'peas', 'peppers', 'squash', 'brussel sprouts', 'cabbage', 'beet', 'cauliflower', 'chicory', 'cucumbers', 'zucchini', 'radish', 'lettuce', 'spinach', 'mushrooms', 'tomatillo']
-fruit_list = ['mango', 'apple', 'orange', 'banana', 'grape', 'kiwi', 'cherry', 'avocado', 'grapefruit', 'pineapple', 'cranberry', 'berries', 'blueberries', 'strawberries', 'blackberries', 'apricot', 'peach', 'lemon', 'lime', 'pear', 'guava', 'plum', 'raspberry', 'pomegranate', 'watermelon']
-spices_list = ['cinnamon', 'oregano', 'italian seasoning', 'basil', 'herbes de provence', 'chives', 'cilantro', 'dill', 'lemongrass', 'marjoram', 'green onion', 'parsley', 'garlic', 'onions', 'rosemary', 'sage', 'tarragon', 'thyme', 'mint', 'pepper', 'salt', 'clove', 'fenugreek', 'cardamom', 'allspice', 'paprika', 'mustard', 'caraway', 'star anise', 'fennel', 'ancho', 'red pepper flakes', 'coriander', 'mace', 'sumac', 'cumin', 'chili powder', 'tumeric', 'garam masala', 'nutmeg', 'cayenne', 'zest', 'chocolate']
-types_of_cooking_styles_list = ['spatchcock', 'braising', 'stewing', 'pot roasting', 'barbecuing', 'smoking', 'pan sear', 'grilling', 'broiling', 'oven roast', 'stir frying', 'deep frying', 'shallow fry', 'fry', 'roast', 'bake']
+# meat_list = ['beef']
+# meat_list = ['chicken', 'beef', 'steak', 'turkey', 'lamb', 'veal', 'pork', 'sausage', 'duck', 'goose', 'octopus', 'fish', 'salmon', 'tilapia', 'crab', 'lobsters', 'mussels', 'shrimp', 'prawns', 'oysters', 'scallops', 'clams']
+# vegetable_list = ['broccoli', 'carrots', 'asparagus', 'green beans', 'tomatoes', 'bok choy', 'broccolini', 'celery', 'corn', 'snap peas', 'peas', 'peppers', 'squash', 'brussel sprouts', 'cabbage', 'beet', 'cauliflower', 'chicory', 'cucumbers', 'zucchini', 'radish', 'lettuce', 'spinach', 'mushrooms', 'tomatillo']
+# fruit_list = ['mango', 'apple', 'orange', 'banana', 'grape', 'kiwi', 'cherry', 'avocado', 'grapefruit', 'pineapple', 'cranberry', 'berries', 'blueberries', 'strawberries', 'blackberries', 'apricot', 'peach', 'lemon', 'lime', 'pear', 'guava', 'plum', 'raspberry', 'pomegranate', 'watermelon']
+# spices_list = ['cinnamon', 'oregano', 'italian seasoning', 'basil', 'herbes de provence', 'chives', 'cilantro', 'dill', 'lemongrass', 'marjoram', 'green onion', 'parsley', 'garlic', 'onions', 'rosemary', 'sage', 'tarragon', 'thyme', 'mint', 'pepper', 'salt', 'clove', 'fenugreek', 'cardamom', 'allspice', 'paprika', 'mustard', 'caraway', 'star anise', 'fennel', 'ancho', 'red pepper flakes', 'coriander', 'mace', 'sumac', 'cumin', 'chili powder', 'tumeric', 'garam masala', 'nutmeg', 'cayenne', 'zest', 'chocolate']
+# types_of_cooking_styles_list = ['spatchcock', 'braising', 'stewing', 'pot roasting', 'barbecuing', 'smoking', 'pan sear', 'grilling', 'broiling', 'oven roast', 'stir frying', 'deep frying', 'shallow fry', 'fry', 'roast', 'bake']
 
-for food in meat_list:
-    getRecipeAllRecipes(food)
+# for food in meat_list:
+#     getRecipeAllRecipes(food)
 
 # for food in vegetable_list:
 #     getRecipeAllRecipes(food)
@@ -85,7 +86,7 @@ for food in meat_list:
 # for food in types_of_cooking_styles_list:
 #     getRecipeAllRecipes(food)
 
-cursor.execute('''INSERT INTO test VALUES (?, ?)''', ('actual_link', 'ingredient_str'))
+conn.commit()
 
 cursor.execute('''SELECT * FROM test''')
 results = cursor.fetchall()
