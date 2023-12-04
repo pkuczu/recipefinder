@@ -56,4 +56,7 @@ Running the React application:
 npm run dev
 ```
   
-
+Running the search function:
+```
+python recipe_search.py
+```
