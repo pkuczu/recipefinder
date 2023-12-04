@@ -60,3 +60,8 @@ Running the search function:
 ```
 python recipe_search.py
 ```
+Running the database (Only need to do so once):
+```
+# make sure to only do this once, so that you don't double import stuff into it
+python allRecipes.py
+```
